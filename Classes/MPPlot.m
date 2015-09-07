@@ -99,31 +99,38 @@
     }
 }
 
-- (NSMutableArray *)pointsForArray:(NSArray *)values
-{
+- (NSMutableArray *)pointsForArray:(NSArray *)values{
+    
     CGFloat min,max;
     
+    
     if (MPValuesRangeNULL(self.valueRanges)) {
-        _valueRanges = [MPPlot rangeForValues:values];
-        min = _valueRanges.min;
-        max = _valueRanges.max;
+        _valueRanges=[MPPlot rangeForValues:values];
+        min=_valueRanges.min;
+        max=_valueRanges.max;
     }else{
-        max = _valueRanges.max;
-        min = _valueRanges.min;
+        max=_valueRanges.max;
+        min=_valueRanges.min;
     }
     
-    NSMutableArray *pointsArray = [[NSMutableArray alloc] init];
+    
+    NSMutableArray *pointsArray=[[NSMutableArray alloc] init];
     
     if(max!=min){
         for (NSString *p in values) {
-            CGFloat val = [p floatValue];
-            val = ((val-min)/(max-min));
+            
+            CGFloat val=[p floatValue];
+            
+            val=((val-min)/(max-min));
+            
             [pointsArray addObject:@(val)];
         }
-    }else{
-        [pointsArray addObject:@(1)];
+        
+    } else {
+        for (NSInteger index = 0; index < [values count]; index++) {
+            [pointsArray addObject:@(0.5)];
+        }
     }
-    
     return pointsArray;
 }
 
