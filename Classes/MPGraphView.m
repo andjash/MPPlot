@@ -117,14 +117,14 @@
     return path;
 }
 
-- (CGPoint)pointAtIndex:(NSInteger)index
-{
-    CGFloat space = (self.frame.size.width)/(points.count+1);
-
-    return CGPointMake(space+(space)*index,self.height-((self.height-PADDING*2)*[[points objectAtIndex:index] floatValue]+PADDING));
+- (CGPoint)pointAtIndex:(NSInteger)index{
+    CGFloat space = 0;
+    if ([points count] > 1) {
+        space = self.frame.size.width / (points.count - 1);
+    }
+    
+    return CGPointMake(space*index,self.height-((self.height-PADDING*2)*[[points objectAtIndex:index] floatValue]+PADDING));
 }
-
-
 
 - (void)animate
 {
