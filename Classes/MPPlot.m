@@ -130,6 +130,9 @@
         for (NSInteger index = 0; index < [values count]; index++) {
             [pointsArray addObject:@(0.5)];
         }
+        if ([pointsArray count] == 1) {
+            [pointsArray addObject:@(0.5)];
+        }
     }
     return pointsArray;
 }
