@@ -10,7 +10,7 @@
 #import "UIView+Frame.h"
 #import "_MPWButton.h"
 
-#define PADDING 12
+#define PADDING 20
 
 #define ANIMATIONDURATION 1.5
 
